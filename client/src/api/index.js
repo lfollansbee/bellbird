@@ -6,8 +6,13 @@ const api = axios.create({
 
 export const getAllChirps = () => api.get(`/`);
 
+export const postNewChirp = (chirpText) => {
+  return api.post(`/`, { text: chirpText })
+}
+
 const apis = {
-  getAllChirps
+  getAllChirps,
+  postNewChirp,
 };
 
 export default apis;
