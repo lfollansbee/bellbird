@@ -3,7 +3,15 @@ const Schema = _Schema
 
 const Chirp = new Schema(
   {
-    text: { type: String },
+    text: {
+      type: String,
+      uppercase: true,
+      required: true,
+    },
+    timestamp: {
+      type: Date, 
+      default: Date.now,
+    }
   },
 )
 

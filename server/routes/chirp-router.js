@@ -14,7 +14,7 @@ router.get('/', async function (req, res) {
         .json({ success: false, error: `Chirps not found` })
     }
     return res.status(200).json({ success: true, data: chirps })
-  }).catch(err => console.log(err))
+  }).sort({timestamp: -1}).catch(err => console.log(err))
 })
 
 router.post('/', async function (req, res) {
