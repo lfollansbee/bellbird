@@ -25,6 +25,10 @@ export default class Home extends Component {
       })
   }
 
+  notify = async () => {
+    await api.notifyUsers()
+  }
+
   handleChange = (event) => {
     this.setState({ chirpValue: event.target.value });
   }
@@ -32,8 +36,8 @@ export default class Home extends Component {
   handleSubmit = (event) => {
     api.postNewChirp(this.state.chirpValue).then(res => {
       if (res.data.success) {
-        this.setState({chirpValue: ''})
         this.getAllChirps();
+        this.notify()
       }
     })
     event.preventDefault();
