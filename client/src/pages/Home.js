@@ -43,6 +43,14 @@ export default class Home extends Component {
     event.preventDefault();
   }
 
+  upvote = (chirpId) => {
+    api.upvoteChirp(chirpId).then(res => {
+      if (res.data.success) {
+        this.getAllChirps();
+      }
+    })
+  }
+
   render() {
     const { chirps } = this.state;
     return (
@@ -50,7 +58,18 @@ export default class Home extends Component {
         <h1>Chirps</h1>
         <ul>
           {chirps && chirps.map((chirp, index) => {
-            return <li key={index}>{chirp.text}</li>
+            return <li key={index}>
+              {chirp.text}
+              <span>
+                <Button
+                  color="primary"
+                  onClick={() => this.upvote(chirp._id)}
+                >
+                  Upvote
+                </Button>
+                Upvotes: {chirp.upvotes}
+              </span>
+            </li>
           })}
         </ul>
         <form onSubmit={this.handleSubmit}>

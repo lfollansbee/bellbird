@@ -37,5 +37,15 @@ router.post('/', async function (req, res) {
     })
 })
 
+router.put('/:chirpId', async function(req, res) {
+  const chirp_id = req.params.chirpId;
+
+  Chirp.findByIdAndUpdate(chirp_id, {$inc : {'upvotes' : 1}}, {new: true}, (err, chirp) => {
+    return res.status(200).json({
+      success: true,
+      chirp
+    })
+  })
+})
 
 export default router

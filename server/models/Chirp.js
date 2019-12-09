@@ -11,6 +11,11 @@ const Chirp = new Schema(
     timestamp: {
       type: Date, 
       default: Date.now,
+    },
+    upvotes: {
+      type: Number,
+      default: 0,
+      require: 0,
     }
   },
 )

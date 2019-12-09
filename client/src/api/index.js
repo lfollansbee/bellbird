@@ -14,6 +14,10 @@ export const postNewChirp = (chirpText) => {
   return api.post(`/`, { text: chirpText })
 }
 
+export const upvoteChirp = (chirpId) => {
+  return api.put(`/${chirpId}`)
+}
+
 export const notifyUsers = (chirpId) => {
   return externalApi.post('/', {
     chirp_id: chirpId
@@ -23,6 +27,7 @@ export const notifyUsers = (chirpId) => {
 const apis = {
   getAllChirps,
   postNewChirp,
+  upvoteChirp,
   notifyUsers,
 };
 
